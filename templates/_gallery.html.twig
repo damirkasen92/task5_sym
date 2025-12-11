@@ -4,10 +4,13 @@
             {% for song in songs %}
                 <div class="col-md-3 mb-3">
                     <div class="card">
-                        {#                                <img src="{{ song.cover }}" class="card-img-top"> #}
+{#                        <img src="{{ song.cover }}" class="card-img-top">#}
                         <div class="card-body">
                             <h5>{{ song.title }}</h5>
-                            {#                                <p>{{ song.likes }} likes</p> #}
+                            <p>{{ song.artist }}</p>
+                            <p>{{ song.albumTitle }}</p>
+                            <p>{{ song.genre }}</p>
+                            <p>{{ song.likes }} likes</p>
                         </div>
                     </div>
                 </div>

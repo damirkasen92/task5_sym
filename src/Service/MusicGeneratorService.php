@@ -46,7 +46,7 @@ class MusicGeneratorService
         ];
     }
 
-    public function generateSongs(string $seed, string $locale, int $page, int $totalSongsPerPage = 6): array
+    public function generateSongs(string $seed, float $likesNum, string $locale, int $page, int $totalSongsPerPage = 6): array
     {
         $songs = [];
         $endRecordIdx = $page * $totalSongsPerPage;
@@ -54,7 +54,7 @@ class MusicGeneratorService
 
         for ($recordIdx = $startRecordIdx; $recordIdx <= $endRecordIdx; $recordIdx++) {
             $songs[$recordIdx] = $this->generateSongData($seed, $locale, $page, $recordIdx);
-            $songs[$recordIdx]['likes'] = $this->generateLike(6.7); // TODO заменить на данные из вне, dto точно нужен
+            $songs[$recordIdx]['likes'] = $this->generateLike($likesNum);
         }
 
         return $songs;

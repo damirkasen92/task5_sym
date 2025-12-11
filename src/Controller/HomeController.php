@@ -37,10 +37,10 @@ final class HomeController extends AbstractController
     {
         $page = $request->query->get('page', 1);
         $language = $request->query->get('language', 'en');
-        $seed = $request->query->getString('seed', 0);
-        $likes = $request->query->getString('likes', 0);
-        $songs = $musicGeneratorService->generateSongs($seed, $_locale, $page);
+        $seed = $request->query->getInt('seed', 0);
+        $likes = (float) $request->query->get('likes', 0.0);
         $view = $request->query->get('view', 'table'); // table | gallery
+        $songs = $musicGeneratorService->generateSongs($seed, $likes, $_locale, $page);
         $data = [
             'songs' => $songs,
             'view' => $view,
@@ -49,8 +49,6 @@ final class HomeController extends AbstractController
             'likes' => $likes,
             'page' => $page,
         ];
-
-
 
         return $this->render('_' . $view . '.html.twig', $data);
     }
@@ -61,21 +59,6 @@ final class HomeController extends AbstractController
     )]
     public function home(string $_locale, Request $request, MusicGeneratorService $musicGeneratorService): Response
     {
-        $page = $request->query->get('page', 1);
-        $language = $request->query->get('language', 'en');
-        $seed = $request->query->getInt('seed', 0);
-        $likes = $request->query->getInt('likes', 0);
-        $songs = $musicGeneratorService->generateSongs($seed, $_locale, $page);
-        $view = $request->query->get('view', 'table'); // table | gallery
-        $data = [
-            'songs' => $songs,
-            'view' => $view,
-            'seed' => $seed,
-            'language' => $language,
-            'likes' => $likes,
-            'page' => $page,
-        ];
-
-        return $this->render('home.html.twig', $data);
+        return $this->render('home.html.twig');
     }
 }
