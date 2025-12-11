@@ -2,6 +2,7 @@
 
 namespace App\Service;
 
+use App\Dto\SongParamsDto;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class SoundGeneratorService
@@ -16,9 +17,9 @@ class SoundGeneratorService
     }
 
     // далее конечно не библиотека, но большинство кода сгенерил AI, код был только подправлен
-    public function generateSound(string $seed, string $locale, int $pageNumber, int $recordIndex): StreamedResponse
+    public function generateSound(SongParamsDto $dto): StreamedResponse
     {
-        $this->rngService->initialize($seed, $locale, $pageNumber, $recordIndex);
+        $this->rngService->initialize($dto);
         $duration = $this->rngService->getRandomFloat(0.3, 0.5);
         $samplesPerNote = (int)(self::SAMPLE_RATE * $duration);
         $oscMap = [

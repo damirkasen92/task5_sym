@@ -8,8 +8,8 @@ class MusicGenreProvider extends BaseProvider
 
     final protected function init(): void
     {
-        self::$genres = json_decode($this->filesystem->readFile(
-            $this->params->get('faker.music_genres_path')
+        self::$genres = json_decode($this->dto->filesystem->readFile(
+            $this->dto->params->get('faker.music_genres_path')
         ), true)['music_genres'];
     }
 

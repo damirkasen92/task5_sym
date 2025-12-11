@@ -4,32 +4,17 @@ namespace App\Service\Faker;
 
 class SentenceProvider extends BaseProvider
 {
-    private static array $words = [];
+    private static array $sentences = [];
 
     final protected function init(): void
     {
-        self::$words = json_decode($this->filesystem->readFile(
-            $this->params->get('faker.words_path')
-        ), true);
+        self::$sentences = json_decode($this->dto->filesystem->readFile(
+            $this->dto->params->get('faker.sentences_path')
+        ), true)['sentences'];
     }
 
-    public function musicTrackTitle(): string
+    public function randomSentence(): string
     {
-        return $this->generateTitle('music_titles');
+        return static::randomElement(self::$sentences)[$this->lang];
     }
-
-    public function albumTitle(): string
-    {
-        return $this->generateTitle('album_titles');
-    }
-
-    private function generateTitle(string $section): string
-    {
-        $words = self::$words[$section][$this->lang]['words'];
-        $patterns = self::$words[$section][$this->lang]['patterns'];
-        $pattern = static::randomElement($patterns);
-
-        return preg_replace_callback('#{word}#', fn() => static::randomElement($words), $pattern);
-    }
-
 }

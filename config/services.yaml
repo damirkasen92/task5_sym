@@ -9,6 +9,9 @@
 parameters:
     faker.music_genres_path: '%kernel.project_dir%/resources/faker/genres.json'
     faker.words_path: '%kernel.project_dir%/resources/faker/words.json'
+    faker.sentences_path: '%kernel.project_dir%/resources/faker/sentences.json'
+
+
 services:
     # default configuration for services in *this* file
     _defaults:

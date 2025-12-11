@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Service\CoverGeneratorService;
+use App\Dto\SongParamsDto;
 use App\Service\MusicGeneratorService;
 use App\Service\SoundGeneratorService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -23,18 +23,8 @@ final class HomeController extends AbstractController
     {
         $page = $request->query->get('page', 1);
         $recordIndex = $request->query->get('record_index', 1);
-        return $soundGeneratorService->generateSound($seed, $_locale, $page, $recordIndex);
-    }
-
-    // int $seed, int $page, int $recordIndex
-    #[Route(
-        '/{_locale}/cover',
-        name: 'cover',
-        methods: ['POST']
-    )]
-    public function getCover(string $albumTitle, string $artist, CoverGeneratorService $coverGeneratorService): string
-    {
-        return $coverGeneratorService->generate($albumTitle, $artist);
+        $songParamsDto = SongParamsDto::factory($seed, $_locale, $page, $recordIndex);
+        return $soundGeneratorService->generateSound($songParamsDto);
     }
 
     #[Route(

@@ -1,0 +1,94 @@
+{
+    "sentences": [
+        {
+            "category": "greeting",
+            "en": "Hello, it is very nice to meet you today.",
+            "de": "Hallo, es ist sehr schön, dich heute zu treffen."
+        },
+        {
+            "category": "daily",
+            "en": "I am going to the supermarket to buy some fresh vegetables and fruits.",
+            "de": "Ich gehe zum Supermarkt, um frisches Gemüse und Obst zu kaufen."
+        },
+        {
+            "category": "daily",
+            "en": "After work, I usually take a short walk in the park to relax.",
+            "de": "Nach der Arbeit mache ich normalerweise einen kurzen Spaziergang im Park, um mich zu entspannen."
+        },
+        {
+            "category": "question",
+            "en": "Could you please tell me how to get to the nearest train station?",
+            "de": "Könntest du mir bitte sagen, wie ich zum nächsten Bahnhof komme?"
+        },
+        {
+            "category": "question",
+            "en": "Do you know what time the museum opens tomorrow morning?",
+            "de": "Weißt du, wann das Museum morgen früh öffnet?"
+        },
+        {
+            "category": "basic",
+            "en": "Thank you very much for your help, I really appreciate it.",
+            "de": "Vielen Dank für deine Hilfe, ich weiß das wirklich zu schätzen."
+        },
+        {
+            "category": "basic",
+            "en": "Yes, I would love to join you for dinner this evening.",
+            "de": "Ja, ich würde sehr gerne heute Abend mit dir zum Abendessen kommen."
+        },
+        {
+            "category": "basic",
+            "en": "No, I do not think that is a good idea right now.",
+            "de": "Nein, ich denke nicht, dass das im Moment eine gute Idee ist."
+        },
+        {
+            "category": "travel",
+            "en": "Last summer we traveled to Italy and visited Rome, Florence, and Venice.",
+            "de": "Letzten Sommer sind wir nach Italien gereist und haben Rom, Florenz und Venedig besucht."
+        },
+        {
+            "category": "travel",
+            "en": "I would like to book a hotel room with a balcony and a sea view.",
+            "de": "Ich möchte ein Hotelzimmer mit Balkon und Meerblick buchen."
+        },
+        {
+            "category": "work",
+            "en": "Tomorrow I have an important meeting with my manager about the new project.",
+            "de": "Morgen habe ich ein wichtiges Treffen mit meinem Manager über das neue Projekt."
+        },
+        {
+            "category": "work",
+            "en": "We are currently developing a software application that will help small businesses.",
+            "de": "Wir entwickeln derzeit eine Softwareanwendung, die kleinen Unternehmen helfen wird."
+        },
+        {
+            "category": "study",
+            "en": "I am learning German because I want to study at a university in Berlin.",
+            "de": "Ich lerne Deutsch, weil ich an einer Universität in Berlin studieren möchte."
+        },
+        {
+            "category": "study",
+            "en": "Every evening I read a few chapters of my book before going to bed.",
+            "de": "Jeden Abend lese ich ein paar Kapitel meines Buches, bevor ich ins Bett gehe."
+        },
+        {
+            "category": "leisure",
+            "en": "On weekends, I enjoy cooking new recipes and trying different kinds of food.",
+            "de": "Am Wochenende koche ich gerne neue Rezepte und probiere verschiedene Arten von Essen aus."
+        },
+        {
+            "category": "leisure",
+            "en": "Sometimes I watch movies with my friends and we talk about them afterwards.",
+            "de": "Manchmal schaue ich Filme mit meinen Freunden und wir sprechen danach darüber."
+        },
+        {
+            "category": "weather",
+            "en": "It is raining heavily today, so I decided to stay at home and read.",
+            "de": "Heute regnet es stark, deshalb habe ich beschlossen, zu Hause zu bleiben und zu lesen."
+        },
+        {
+            "category": "weather",
+            "en": "The sun is shining and the sky is clear, it is a perfect day for a picnic.",
+            "de": "Die Sonne scheint und der Himmel ist klar, es ist ein perfekter Tag für ein Picknick."
+        }
+    ]
+}

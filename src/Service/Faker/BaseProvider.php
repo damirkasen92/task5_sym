@@ -2,19 +2,19 @@
 
 namespace App\Service\Faker;
 
-use Faker\Generator;
+use App\Dto\FakerDto;
 use Faker\Provider\Base;
-use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
-use Symfony\Component\Filesystem\Filesystem;
 
 abstract class BaseProvider extends Base
 {
     protected readonly string $lang;
+    protected readonly FakerDto $dto;
 
-    public function __construct(Generator $generator, string $locale, protected ParameterBagInterface $params, protected Filesystem $filesystem)
+    public function __construct(FakerDto $dto)
     {
-        parent::__construct($generator);
-        $this->lang = $locale;
+        parent::__construct($dto->faker);
+        $this->lang = $dto->locale;
+        $this->dto = $dto;
         $this->init();
     }
 

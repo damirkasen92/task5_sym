@@ -2,6 +2,8 @@
 
 namespace App\Service;
 
+use App\Dto\SongParamsDto;
+
 class DeterministicGeneratorService
 {
     public string $finalSeed {
@@ -10,9 +12,9 @@ class DeterministicGeneratorService
         }
     }
 
-    public function initialize(string $seed, string $locale, int $pageNumber, int $recordIndex = 0): void
+    public function initialize(SongParamsDto $dto): void
     {
-        $combinedKey = $locale . '|' . $seed . '|' . $pageNumber . '|' . $recordIndex;
+        $combinedKey = $dto->locale . '|' . $dto->seed . '|' . $dto->pageNumber . '|' . $dto->recordIndex;
         $hashedSeed = crc32($combinedKey);
 
         // mt_srand() устанавливает начальное состояние генератора mt_rand().

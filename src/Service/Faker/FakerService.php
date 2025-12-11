@@ -2,6 +2,7 @@
 
 namespace App\Service\Faker;
 
+use App\Dto\FakerDto;
 use Faker\Factory;
 use Faker\Generator;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
@@ -17,8 +18,11 @@ readonly class FakerService
     {
         $faker = Factory::create($locale);
         $faker->seed((int)$seed);
-        $faker->addProvider(new MusicGenreProvider($faker, $locale, $this->params, $this->filesystem));
-        $faker->addProvider(new SentenceProvider($faker, $locale, $this->params, $this->filesystem));
+
+        $dto = FakerDto::factory($faker, $locale, $this->params, $this->filesystem);
+        $faker->addProvider(new MusicGenreProvider($dto));
+        $faker->addProvider(new SongTitleProvider($dto));
+        $faker->addProvider(new SentenceProvider($dto));
         return $faker;
     }
 }
