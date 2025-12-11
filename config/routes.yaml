@@ -17,7 +17,5 @@ controllers_with_locale:
 controllers_default:
     resource: routing.controllers
     type: attribute
-    defaults:
-        _locale: en
     requirements:
         _locale: en|de

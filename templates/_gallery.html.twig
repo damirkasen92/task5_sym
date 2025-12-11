@@ -1,17 +1,39 @@
 <turbo-frame id="data-frame">
     <div data-controller="animate">
-        <div class="row">
+        <div class="row"
+             data-controller="infinite-scroll"
+             data-infinite-scroll-next-url-value="{{ path('home_content', app.request.query.all | merge({page: next_page})) }}"
+        >
             {% for song in songs %}
-                <div class="col-md-3 mb-3">
-                    <div class="card">
-{#                        <img src="{{ song.cover }}" class="card-img-top">#}
-                        <div class="card-body">
-                            <h5>{{ song.title }}</h5>
-                            <p>{{ song.artist }}</p>
-                            <p>{{ song.albumTitle }}</p>
-                            <p>{{ song.genre }}</p>
-                            <p>{{ song.likes }} likes</p>
+                <div class="col-md-3 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        {# Обложка песни #}
+                        {% if song.cover %}
+                            <img src="{{ song.cover }}" class="card-img-top img-fluid" alt="{{ song.title }}">
+                        {% endif %}
+
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title text-truncate">{{ song.title }}</h5>
+                            <p class="card-subtitle mb-2 text-muted">{{ song.artist }}</p>
+
+                            <ul class="list-unstyled mb-3">
+                                <li><strong>Album:</strong> {{ song.albumTitle }}</li>
+                                <li><strong>Genre:</strong> {{ song.genre }}</li>
+                                <li><strong>Likes:</strong> {{ song.likes }}</li>
+                            </ul>
+
+                            <div class="mt-auto">
+                                <audio class="w-100"></audio>
+                                <button type="button"
+                                        class="btn btn-primary btn-sm mt-2 w-100 btn-animate"
+                                        data-controller="play-song"
+                                        data-action="click->play-song#click"
+                                        data-record-idx="{{ song.index }}">
+                                    ▶️ Play
+                                </button>
+                            </div>
                         </div>
+
                     </div>
                 </div>
             {% endfor %}

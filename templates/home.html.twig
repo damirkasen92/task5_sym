@@ -2,34 +2,76 @@
 
 {% block body %}
     <div class="container my-4">
+        {#    перевод хотел сделать, потом вспомнил про SPA    #}
         <h1 class="mb-3">{{ 'home.songs'|trans }}</h1>
 
-        <div class="container mt-3">
-            <div class="d-flex gap-3 align-items-center"
-                 data-controller="filters"
-                 data-action="change->filters#update"
-            >
+        <div class="container mt-4">
+            <form class="row gy-3 gx-4 align-items-center"
+                  data-controller="filters"
+                  data-action="change->filters#update">
 
-                <select class="form-select" data-filters-target="language">
-                    <option value="en">English</option>
-                    <option value="de">German</option>
-                </select>
+                <!-- Language -->
+                <div class="col-12 col-md-4">
+                    <label for="language" class="form-label fw-semibold">{{ 'home.language'|trans }}</label>
+                    <select id="language" class="form-select shadow-sm" data-filters-target="language">
+                        <option value="en">English</option>
+                        <option value="de">German</option>
+                    </select>
+                </div>
 
-                <input type="number" class="form-control" placeholder="Seed"
-                       data-filters-target="seed" value="0"/>
+                <!-- Seed -->
+                <div class="col-12 col-md-4" data-controller="seed">
+                    <label for="seed" class="form-label fw-semibold">Seed</label>
+                    <div class="input-group">
+                        <input id="seed" type="text" class="form-control shadow-sm"
+                               placeholder="Seed"
+                               data-filters-target="seed"
+                               data-seed-target="input" value="0"/>
+                        <button type="button" class="btn btn-outline-secondary"
+                                data-action="click->seed#generate">
+                            Generate
+                        </button>
+                    </div>
+                </div>
 
-                <input type="range" class="form-control" placeholder="Likes per song"
-                       data-filters-target="likes" value="0" step="0.5" min="0" max="10.0"/>
+                <!-- Likes per song -->
+                <div class="col-12 col-md-4">
+                    <label for="likes" class="form-label fw-semibold">Likes per song</label>
+                    <div class="d-flex align-items-center">
+                        <input id="likes" type="range" class="form-range flex-grow-1"
+                               data-filters-target="likes"
+                               value="0" step="0.1" min="0" max="10.0"/>
+                        <span id="likes-value" class="badge bg-primary ms-3">0</span>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+
+        <div data-controller="view-switch" class="d-flex justify-content-center mb-3 mt-3">
+            <div class="btn-group">
+                <button type="button"
+                        class="btn btn-outline-primary active"
+                        data-action="view-switch#switch"
+                        data-view="table">
+                    Table
+                </button>
+                <button type="button"
+                        class="btn btn-outline-primary"
+                        data-action="view-switch#switch"
+                        data-view="gallery">
+                    Gallery
+                </button>
             </div>
         </div>
 
-        <div data-controller="view-switch">
-            <button data-action="view-switch#switch" data-view="table">Список</button>
-            <button data-action="view-switch#switch" data-view="gallery">Сетка</button>
-        </div>
+        <turbo-frame class="turbo-frame" id="data-frame" src="{{ path('home_content', app.request.query.all) }}">
 
-        <turbo-frame id="data-frame" src="{{ path('home_content', app.request.query.all) }}">
-            загрузка..
+            <div class="spinner-border text-warning"
+                 style="width: 5rem; height: 5rem;" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+
         </turbo-frame>
     </div>
 {% endblock %}

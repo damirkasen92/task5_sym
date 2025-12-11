@@ -1,5 +1,13 @@
 body {
-    background-color: skyblue;
+    background-color: #9eeaf9;
+}
+
+.turbo-frame {
+    width: 100%;
+    min-height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .fade-enter {
@@ -11,4 +19,25 @@ body {
     opacity: 1;
     transform: translateY(0);
     transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.table-responsive {
+    width: 100%;
+}
+
+.collapse {
+    transition: height 0.35s ease;
+}
+
+.btn-animate {
+    transition: all 0.25s ease;
+}
+
+.btn-animate.playing {
+    background-color: #dc3545; /* красный для паузы */
+    transform: scale(1.05);
+}
+
+.pointer {
+    cursor: pointer;
 }

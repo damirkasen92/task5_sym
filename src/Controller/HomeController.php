@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Service\CoverGeneratorService;
 use App\Service\MusicGeneratorService;
+use App\Service\SoundGeneratorService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,11 +19,22 @@ final class HomeController extends AbstractController
         requirements: ['seed' => '[\d]+', 'page' => '[\d]+', 'record_index' => '[\d]+'],
         methods: ['GET']
     )]
-    public function getWav(int $seed, string $_locale, MusicGeneratorService $musicGeneratorService, Request $request): StreamedResponse
+    public function getWav(string $seed, string $_locale, SoundGeneratorService $soundGeneratorService, Request $request): StreamedResponse
     {
         $page = $request->query->get('page', 1);
         $recordIndex = $request->query->get('record_index', 1);
-        return $musicGeneratorService->generatePreview($seed, $_locale, $page, $recordIndex);
+        return $soundGeneratorService->generateSound($seed, $_locale, $page, $recordIndex);
+    }
+
+    // int $seed, int $page, int $recordIndex
+    #[Route(
+        '/{_locale}/cover',
+        name: 'cover',
+        methods: ['POST']
+    )]
+    public function getCover(string $albumTitle, string $artist, CoverGeneratorService $coverGeneratorService): string
+    {
+        return $coverGeneratorService->generate($albumTitle, $artist);
     }
 
     #[Route(
@@ -37,10 +50,10 @@ final class HomeController extends AbstractController
     {
         $page = $request->query->get('page', 1);
         $language = $request->query->get('language', 'en');
-        $seed = $request->query->getInt('seed', 0);
+        $seed = $request->query->get('seed', 0);
         $likes = (float) $request->query->get('likes', 0.0);
         $view = $request->query->get('view', 'table'); // table | gallery
-        $songs = $musicGeneratorService->generateSongs($seed, $likes, $_locale, $page);
+        $songs = $musicGeneratorService->generateSongs($seed, $likes, $_locale, $page, 8);
         $data = [
             'songs' => $songs,
             'view' => $view,
@@ -48,16 +61,22 @@ final class HomeController extends AbstractController
             'language' => $language,
             'likes' => $likes,
             'page' => $page,
+            'next_page' => $page + 1,
         ];
 
         return $this->render('_' . $view . '.html.twig', $data);
     }
 
     #[Route(
+        path: '/',
+        name: 'home_default',
+        defaults: ['_locale' => 'en']
+    )]
+    #[Route(
         path: '/{_locale}',
         name: 'home',
     )]
-    public function home(string $_locale, Request $request, MusicGeneratorService $musicGeneratorService): Response
+    public function home(): Response
     {
         return $this->render('home.html.twig');
     }
