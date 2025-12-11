@@ -68,6 +68,7 @@ class MusicGeneratorService
 
         // Если дробная часть > 0, то с вероятностью fraction добавляем +1
         if ($fraction > 0) {
+            // рандомное число от 0 до 1
             if (mt_rand() / mt_getrandmax() < $fraction) {
                 return $base + 1;
             }

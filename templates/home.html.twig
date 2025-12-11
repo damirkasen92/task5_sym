@@ -23,10 +23,13 @@
             </div>
         </div>
 
-        {% include './includes/_view_buttons.html.twig' %}
+        <div data-controller="view-switch">
+            <button data-action="view-switch#switch" data-view="table">Список</button>
+            <button data-action="view-switch#switch" data-view="gallery">Сетка</button>
+        </div>
 
-        <turbo-frame id="data-frame" src="{{ path('home_content') }}">
-            Загрузка...
+        <turbo-frame id="data-frame" src="{{ path('home_content', app.request.query.all) }}">
+            загрузка..
         </turbo-frame>
     </div>
 {% endblock %}
