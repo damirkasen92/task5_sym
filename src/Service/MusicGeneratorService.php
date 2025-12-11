@@ -54,9 +54,26 @@ class MusicGeneratorService
 
         for ($recordIdx = $startRecordIdx; $recordIdx <= $endRecordIdx; $recordIdx++) {
             $songs[$recordIdx] = $this->generateSongData($seed, $locale, $page, $recordIdx);
+            $songs[$recordIdx]['likes'] = $this->generateLike(6.7); // TODO заменить на данные из вне, dto точно нужен
         }
 
         return $songs;
+    }
+
+    private function generateLike(float $avgLikes)
+    {
+        $averageLikes = max(0, min(10, $avgLikes));
+        $base = (int) floor($averageLikes);
+        $fraction = $averageLikes - $base;
+
+        // Если дробная часть > 0, то с вероятностью fraction добавляем +1
+        if ($fraction > 0) {
+            if (mt_rand() / mt_getrandmax() < $fraction) {
+                return $base + 1;
+            }
+        }
+
+        return $base;
     }
 
     // далее конечно не библиотека, но большинство кода сгенерил AI, код был только подправлен
