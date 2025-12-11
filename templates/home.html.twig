@@ -66,12 +66,10 @@
         </div>
 
         <turbo-frame class="turbo-frame" id="data-frame" src="{{ path('home_content', app.request.query.all) }}">
-
             <div class="spinner-border text-success"
                  style="width: 5rem; height: 5rem;" role="status">
                 <span class="visually-hidden">Loading...</span>
             </div>
-
         </turbo-frame>
     </div>
 {% endblock %}

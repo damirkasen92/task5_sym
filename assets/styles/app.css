@@ -41,3 +41,14 @@ body {
 .pointer {
     cursor: pointer;
 }
+
+turbo-frame[busy] {
+    opacity: 0.5;
+    position: relative;
+}
+
+turbo-frame[busy]::after {
+    position: absolute;
+    inset: 0;
+    background: rgba(255,255,255,0.7);
+}
