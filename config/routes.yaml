@@ -7,5 +7,17 @@
 # To list all registered routes, run the following command:
 #   bin/console debug:router
 
-controllers:
+controllers_with_locale:
     resource: routing.controllers
+    type: attribute
+    prefix: /{_locale}
+    requirements:
+        _locale: en|de
+
+controllers_default:
+    resource: routing.controllers
+    type: attribute
+    defaults:
+        _locale: en
+    requirements:
+        _locale: en|de

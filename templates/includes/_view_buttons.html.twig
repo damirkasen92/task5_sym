@@ -1,0 +1,14 @@
+<div class="btn-group mb-3">
+    <a href="{{ path('home_content', app.request.query.all | merge({view: 'table'})) }}"
+       class="btn btn-outline-primary"
+       data-controller="view"
+       data-action="click->view#handle"
+       data-view="table"
+    >Table View</a>
+    <a href="{{ path('home_content', app.request.query.all  | merge({view: 'gallery'})) }}"
+       class="btn btn-outline-primary"
+       data-controller="view"
+       data-action="click->view#handle"
+       data-view="gallery"
+    >Gallery View</a>
+</div>

@@ -1,0 +1,30 @@
+<turbo-frame id="data-frame">
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>Likes</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for song in songs %}
+            <tr>
+                <td>{{ song.title }}</td>
+                <td>{{ song.albumTitle }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="pagination">
+        {% for i in 1..5 %}
+            <a href="{{ path('home_content', app.request.query.all | merge({'page': i})) }}"
+               class="btn btn-sm {% if i == page %}btn-primary{% else %}btn-outline-primary{% endif %}"
+               data-turbo-frame="data-frame">
+                {{ i }}
+            </a>
+        {% endfor %}
+    </div>
+
+</turbo-frame>

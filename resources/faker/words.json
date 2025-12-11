@@ -1,0 +1,102 @@
+{
+    "music_titles": {
+        "en": {
+            "words": [
+                "Love",
+                "Dream",
+                "Fire",
+                "Sky",
+                "Heart",
+                "Night",
+                "Light",
+                "Dance",
+                "Soul",
+                "Star",
+                "Echo",
+                "Shadow",
+                "Freedom",
+                "Hope",
+                "Storm"
+            ],
+            "patterns": [
+                "The {word}",
+                "{word} of {word}",
+                "{word} in the {word}",
+                "{word} Forever",
+                "Lost {word}",
+                "Beyond the {word}"
+            ]
+        },
+        "de": {
+            "words": [
+                "Liebe",
+                "Traum",
+                "Feuer",
+                "Himmel",
+                "Herz",
+                "Nacht",
+                "Licht",
+                "Tanz",
+                "Seele",
+                "Stern",
+                "Echo",
+                "Schatten",
+                "Freiheit",
+                "Hoffnung",
+                "Sturm"
+            ],
+            "patterns": [
+                "Das {word}",
+                "{word} der {word}",
+                "{word} im {word}",
+                "{word} für immer",
+                "Verlorenes {word}",
+                "Jenseits des {word}"
+            ]
+        }
+    },
+    "album_titles": {
+        "en": {
+            "words": [
+                "Journey",
+                "Voices",
+                "Horizons",
+                "Legends",
+                "Memories",
+                "Dreams",
+                "Stories",
+                "Waves",
+                "Lights",
+                "Secrets"
+            ],
+            "patterns": [
+                "{word} of {word}",
+                "The {word} Collection",
+                "{word} Chronicles",
+                "{word} & {word}",
+                "Infinite {word}"
+            ]
+        },
+        "de": {
+            "words": [
+                "Reise",
+                "Stimmen",
+                "Horizonte",
+                "Legenden",
+                "Erinnerungen",
+                "Träume",
+                "Geschichten",
+                "Wellen",
+                "Lichter",
+                "Geheimnisse"
+            ],
+            "patterns": [
+                "{word} der {word}",
+                "Die {word} Sammlung",
+                "{word} Chroniken",
+                "{word} & {word}",
+                "Unendliche {word}"
+            ]
+        }
+    }
+}

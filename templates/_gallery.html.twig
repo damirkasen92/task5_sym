@@ -1,0 +1,15 @@
+<turbo-frame id="data-frame">
+    <div class="row">
+        {% for song in songs %}
+            <div class="col-md-3 mb-3">
+                <div class="card">
+                    {#                                <img src="{{ song.cover }}" class="card-img-top"> #}
+                    <div class="card-body">
+                        <h5>{{ song.title }}</h5>
+                        {#                                <p>{{ song.likes }} likes</p> #}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</turbo-frame>
